@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Menu, Search, X } from 'lucide-react'
 import ProfileDropdown from './ProfileDropdown.jsx'
+import logo from '../../assets/logo.png'
 
 const navigation = [
   { label: 'Explorar', href: '/explorar' },
@@ -54,7 +55,7 @@ export default function Header() {
           href="/"
           className="shrink-0 rounded-lg text-2xl font-semibold tracking-tight transition-colors hover:text-[#f1c84b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f1c84b]"
         >
-          Folheto
+          <img src={logo} alt="Folheto" className="h-10 w-auto" />
         </a>
 
         <button
@@ -92,7 +93,7 @@ export default function Header() {
           className={`${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} fixed inset-0 z-50 flex min-w-0 flex-col gap-6 overflow-y-auto bg-zinc-800 px-6 py-4 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:static lg:z-auto lg:w-auto lg:flex-1 lg:translate-x-0 lg:flex-row lg:items-center lg:gap-6 lg:overflow-visible lg:bg-transparent lg:p-0`}
         >
         <div className="flex items-center justify-between border-b border-white/10 pb-4 lg:hidden">
-          <a href="/" onClick={closeMenu} className="rounded-lg text-2xl font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f1c84b]">Folheto</a>
+          <a href="/" onClick={closeMenu} className="rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f1c84b]"><img src={logo} alt="Folheto" className="h-10 w-auto" /></a>
           <button
             ref={closeButtonRef}
             type="button"
