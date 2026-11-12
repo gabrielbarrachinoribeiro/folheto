@@ -1,15 +1,13 @@
 import Header from './components/Header/Header.jsx'
-import Hero from './pages/Home/Hero/Hero.jsx'
-import ContinueReading from './pages/Home/ContinueReading/ContinueReading.jsx'
+import Footer from './components/Footer/Footer.jsx'
+import Home from './pages/Home/Home.jsx'
 
 export default function App() {
   return (
     <div className="min-h-screen bg-[#101017]">
       <Header />
-      <main>
-        <Hero />
-        <ContinueReading />
-      </main>
+      <Home/>
+      <Footer />
     </div>
   )
 }

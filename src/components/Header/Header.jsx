@@ -42,7 +42,7 @@ export default function Header() {
 
   return (
     <header
-      className="border-b border-white/5 bg-[#101017] text-zinc-100"
+      className="sticky top-0 z-50 border-b border-white/5 bg-[#101017] text-zinc-100"
       onKeyDown={(event) => {
         if (event.key === 'Escape' && isMenuOpen) {
           closeMenu()

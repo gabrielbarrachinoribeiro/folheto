@@ -3,12 +3,16 @@ import { ArrowLeft, ArrowRight, BookOpen, Star } from "lucide-react";
 import cover1 from "../../../assets/capa1.png";
 import cover2 from "../../../assets/capa2.png";
 import cover3 from "../../../assets/capa3.png";
+import background1 from "../../../assets/fundo1.png";
+import background2 from "../../../assets/fundo2.png";
+import background3 from "../../../assets/fundo3.png";
 
 const highlights = [
   {
     title: "Vermelho Absoluto",
     slug: "vermelho-absoluto",
     cover: cover1,
+    background: background1,
     format: "HQ · Em andamento",
     description:
       "Depois do Eclipse, o céu de Marte virou um teto de poeira. Íris voltou sozinha — e trouxe algo com ela.",
@@ -24,6 +28,7 @@ const highlights = [
     title: "Neon Yokohama",
     slug: "neon-yokohama",
     cover: cover2,
+    background: background2,
     format: "Mangá · Completo",
     description:
       "Yokohama, 2091. Lembranças são aluguel. Rin vendeu as dela — e encontrou uma que não é sua.",
@@ -39,6 +44,7 @@ const highlights = [
     title: "Coral",
     slug: "coral",
     cover: cover3,
+    background: background3,
     format: "Webtoon · Em andamento",
     description:
       "Algo no recife está colecionando mergulhadores. E eles continuam sorrindo.",
@@ -76,22 +82,33 @@ export default function Hero() {
   }, [activeIndex, displayedIndex]);
 
   useEffect(() => {
-    highlights.forEach(({ cover }) => {
-      const image = new Image();
-      image.src = cover;
+    highlights.forEach(({ cover, background }) => {
+      [cover, background].forEach((src) => {
+        const image = new Image();
+        image.src = src;
+      });
     });
   }, []);
 
   return (
-    <section
-      className="border-b border-[#2b2b35] text-[#faf9f6] bg-[radial-gradient(ellipse_at_22%_32%,#f1c84b0e,transparent_58%),radial-gradient(#ffffff06_1px,transparent_1px)] bg-size-[auto,7px_7px] [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-[#f1c84b] [&_a:focus-visible]:outline-offset-[5px] [&_button:focus-visible]:outline-2 [&_button:focus-visible]:outline-[#f1c84b] [&_button:focus-visible]:outline-offset-[5px]"
+    <main
+      className="relative isolate border-b border-[#2b2b35] bg-[#101017] text-[#faf9f6] [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-[#f1c84b] [&_a:focus-visible]:outline-offset-[5px] [&_button:focus-visible]:outline-2 [&_button:focus-visible]:outline-[#f1c84b] [&_button:focus-visible]:outline-offset-[5px]"
       aria-label="Destaques do mês"
       aria-roledescription="carrossel"
     >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <img
+          src={item.background}
+          alt=""
+          className={`h-full w-full object-cover ${fadeClass}`}
+          fetchPriority="high"
+        />
+        <div className="absolute inset-0 bg-[#101017]/85" />
+      </div>
       <div className="container mx-auto grid grid-cols-1 gap-10 px-6 pt-9 pb-12 sm:grid-cols-2 sm:pt-12 sm:pb-14 lg:gap-20 lg:pt-14 lg:pb-20">
         <div className="flex min-w-0 flex-col justify-between">
           <div className={fadeClass} aria-live="polite" aria-atomic="true">
-            <div className="font-['Barlow_Condensed',sans-serif] font-semibold uppercase tracking-[1.8px] flex flex-wrap items-center gap-3.5 text-[11px] text-[#f1c84b]">
+            <div className="font-['Barlow_Condensed',sans-serif] font-semibold uppercase tracking-[1.8px] flex flex-wrap items-center gap-3.5 text-xs text-[#f1c84b]">
               <span>Destaque do mês</span>
               <i className="h-px w-8 bg-[#f1c84b70]" aria-hidden="true" />
               <span className="text-slate-400">{item.format}</span>
@@ -105,11 +122,11 @@ export default function Hero() {
           </div>
           <div className="pt-9 sm:pt-18">
             <div
-              className={`flex flex-wrap items-center gap-3 text-[11px] text-slate-400 lg:gap-5 ${fadeClass}`}
+              className={`flex flex-wrap items-center gap-3 text-xs text-slate-400 lg:gap-5 ${fadeClass}`}
             >
-              <div className="font-['Barlow_Condensed',sans-serif] font-semibold uppercase tracking-[1.8px] flex flex-wrap gap-2 text-[10px] text-zinc-200 [&>span]:border [&>span]:border-[#303039] [&>span]:px-2.25 [&>span]:py-0.75">
+              <div className="font-['Barlow_Condensed',sans-serif] font-semibold uppercase tracking-[1.8px] flex flex-wrap gap-2 text-xs text-zinc-200 [&>span]:border [&>span]:border-[#303039] [&>span]:px-2.25 [&>span]:py-0.75">
                 {item.genres.map((genre) => (
-                  <span key={genre}>{genre}</span>
+                  <span key={genre} className="rounded-full">{genre}</span>
                 ))}
               </div>
               <span
@@ -171,7 +188,7 @@ export default function Hero() {
                   </button>
                 ))}
               </div>
-              <span className="font-['Barlow_Condensed',sans-serif] font-semibold uppercase tracking-[1.8px] text-[11px] text-slate-400">
+              <span className="font-['Barlow_Condensed',sans-serif] font-semibold uppercase tracking-[1.8px] text-xs text-slate-400">
                 0{activeIndex + 1} / 0{highlights.length}
               </span>
             </div>
@@ -193,7 +210,7 @@ export default function Hero() {
             />
             <div className="absolute right-4 bottom-4.5 left-4 z-1 flex items-end justify-between gap-4">
               <div>
-                <span className="font-['Barlow_Condensed',sans-serif] font-semibold uppercase tracking-[1.8px] mb-1 block text-[10px] text-[#f1c84b]">
+                <span className="font-['Barlow_Condensed',sans-serif] font-semibold uppercase tracking-[1.8px] mb-1 block text-xs text-[#f1c84b]">
                   {item.publisher}
                 </span>
                 <span className="font-['Barlow_Condensed',sans-serif] block text-xl leading-[1.1] font-extrabold text-[#faf9f6] uppercase">
@@ -208,6 +225,6 @@ export default function Hero() {
           </a>
         </div>
       </div>
-    </section>
+    </main>
   );
 }
