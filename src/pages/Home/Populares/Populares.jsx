@@ -1,50 +1,5 @@
 import { ArrowRight, Star } from "lucide-react";
-import cover1 from "../../../assets/capa1.png";
-import cover2 from "../../../assets/capa2.png";
-import cover3 from "../../../assets/capa3.png";
-
-const popularComics = [
-  {
-    title: "Neon Yokohama",
-    slug: "neon-yokohama",
-    cover: cover2,
-    genre: "Ficção Científica",
-    rating: "4.9",
-    readers: "312 mil",
-  },
-  {
-    title: "Coral",
-    slug: "coral",
-    cover: cover3,
-    genre: "Terror",
-    rating: "4.8",
-    readers: "202 mil",
-  },
-  {
-    title: "Herdeiros do Vento",
-    slug: "herdeiros-do-vento",
-    cover: cover1,
-    genre: "Fantasia",
-    rating: "4.9",
-    readers: "156 mil",
-  },
-  {
-    title: "Vermelho Absoluto",
-    slug: "vermelho-absoluto",
-    cover: cover1,
-    genre: "Ação",
-    rating: "4.8",
-    readers: "128 mil",
-  },
-  {
-    title: "Silêncio Branco",
-    slug: "silencio-branco",
-    cover: cover3,
-    genre: "Terror",
-    rating: "4.8",
-    readers: "97 mil",
-  },
-];
+import { popularComics } from "../../../data/populares.js";
 
 export default function Populares() {
   return (
@@ -78,10 +33,10 @@ export default function Populares() {
         </div>
 
         <ol className="grid grid-cols-1 gap-x-8 gap-y-8 min-[400px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-          {popularComics.map((comic, index) => (
+          {popularComics.slice(0, 5).map((comic, index) => (
             <li key={comic.slug} className="min-w-0">
               <a
-                href={`/ler/${comic.slug}/1`}
+                href={`/quadrinhos/${comic.slug}`}
                 className="group relative block pl-7 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f1c84b]"
                 aria-label={`${index + 1}º lugar: ${comic.title}`}
               >

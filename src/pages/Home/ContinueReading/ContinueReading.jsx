@@ -1,37 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import cover1 from "../../../assets/capa1.png";
-import cover2 from "../../../assets/capa2.png";
-import cover3 from "../../../assets/capa3.png";
-
-const readings = [
-  {
-    title: "Neon Yokohama",
-    slug: "neon-yokohama",
-    cover: cover2,
-    chapter: 12,
-    chapterTitle: "Vozes no corredor",
-    page: 4,
-    totalPages: 10,
-  },
-  {
-    title: "As Brumas de Kel",
-    slug: "as-brumas-de-kel",
-    cover: cover1,
-    chapter: 3,
-    chapterTitle: "Sem retorno",
-    page: 7,
-    totalPages: 10,
-  },
-  {
-    title: "Coral",
-    slug: "coral",
-    cover: cover3,
-    chapter: 1,
-    chapterTitle: "O primeiro sinal",
-    page: 2,
-    totalPages: 10,
-  },
-];
+import { readings } from "../../../data/readings.js";
 
 export default function ContinueReading() {
   return (

@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Menu, Search, X } from 'lucide-react'
+import ProfileDropdown from './ProfileDropdown.jsx'
 
 const navigation = [
   { label: 'Explorar', href: '/explorar' },
-  { label: 'Biblioteca', href: '/biblioteca' },
   { label: 'Categorias', href: '/categorias' },
-  { label: 'Favoritos', href: '/favoritos' },
 ]
 
 export default function Header() {
@@ -120,7 +119,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <form action="/buscar" role="search" onSubmit={closeMenu} className="flex min-w-0 w-full items-center gap-3 rounded-xl border border-zinc-700/70 bg-white/2 px-4 py-2.5 transition-colors focus-within:border-[#f1c84b] lg:ml-auto lg:flex-1">
+        <form action="/buscar" role="search" onSubmit={closeMenu} className="flex min-w-0 w-full items-center gap-3 rounded-xl border border-zinc-700/70 bg-white/2 px-4 py-2.5 transition-colors focus-within:border-[#f1c84b] lg:ml-auto lg:max-w-lg lg:flex-1">
           <Search aria-hidden="true" className="size-4 shrink-0 text-zinc-500" />
           <label htmlFor="header-search" className="sr-only">Buscar título ou autor</label>
           <input
@@ -132,14 +131,7 @@ export default function Header() {
           />
         </form>
 
-        <div className="flex shrink-0 items-center gap-2">
-          <a href="/entrar" onClick={closeMenu} className="flex-1 rounded-xl border border-zinc-700 px-4 py-2.5 text-center text-base font-medium text-zinc-200 transition-colors hover:border-[#f1c84b] hover:text-[#f1c84b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f1c84b] lg:flex-none">
-            Entrar
-          </a>
-          <a href="/criar-conta" onClick={closeMenu} className="flex-1 whitespace-nowrap rounded-xl bg-[#f1c84b] px-4 py-2.5 text-center text-base font-semibold text-[#101017] transition-colors hover:bg-[#f1c84b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f1c84b] lg:flex-none">
-            Criar conta
-          </a>
-        </div>
+        <ProfileDropdown onNavigate={closeMenu} />
         </div>
       </div>
     </header>

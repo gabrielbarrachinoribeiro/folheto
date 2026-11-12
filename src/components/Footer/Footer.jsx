@@ -11,7 +11,6 @@ const navigation = [
     title: 'Minha conta',
     links: [
       { label: 'Biblioteca', href: '/biblioteca' },
-      { label: 'Favoritos', href: '/favoritos' },
       { label: 'Perfil', href: '/perfil' },
     ],
   },
